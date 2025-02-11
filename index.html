@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقييم الموظفين</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4; }
+        form { background: white; padding: 20px; border-radius: 10px; width: 50%; margin: auto; box-shadow: 0 0 10px #ddd; }
+        input, select, textarea { width: 90%; margin: 10px 0; padding: 8px; }
+        button { background: blue; color: white; padding: 10px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h2>نموذج تقييم الموظفين</h2>
+    <form id="evaluationForm">
+        <input type="text" id="name" placeholder="اسم الموظف" required>
+        <input type="text" id="department" placeholder="القسم" required>
+        <select id="performance" required>
+            <option value="">تقييم الأداء</option>
+            <option value="ممتاز">ممتاز</option>
+            <option value="جيد جداً">جيد جداً</option>
+            <option value="جيد">جيد</option>
+            <option value="متوسط">متوسط</option>
+            <option value="ضعيف">ضعيف</option>
+        </select>
+        <select id="punctuality" required>
+            <option value="">التزام بالمواعيد</option>
+            <option value="ممتاز">ممتاز</option>
+            <option value="جيد جداً">جيد جداً</option>
+            <option value="جيد">جيد</option>
+            <option value="متوسط">متوسط</option>
+            <option value="ضعيف">ضعيف</option>
+        </select>
+        <select id="skills" required>
+            <option value="">المهارات الشخصية</option>
+            <option value="ممتاز">ممتاز</option>
+            <option value="جيد جداً">جيد جداً</option>
+            <option value="جيد">جيد</option>
+            <option value="متوسط">متوسط</option>
+            <option value="ضعيف">ضعيف</option>
+        </select>
+        <textarea id="notes" placeholder="ملاحظات إضافية"></textarea>
+        <button type="submit">إرسال التقييم</button>
+    </form>
+
+    <script>
+        document.getElementById("evaluationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            var formData = {
+                name: document.getElementById("name").value,
+                department: document.getElementById("department").value,
+                performance: document.getElementById("performance").value,
+                punctuality: document.getElementById("punctuality").value,
+                skills: document.getElementById("skills").value,
+                notes: document.getElementById("notes").value
+            };
+            
+            fetch("### ضع رابط Web App هنا ###", {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            }).then(() => {
+                alert("تم إرسال التقييم بنجاح!");
+                document.getElementById("evaluationForm").reset();
+            }).catch(error => console.error("Error:", error));
+        });
+    </script>
+
+</body>
+</html>
